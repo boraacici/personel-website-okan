@@ -1,0 +1,149 @@
+// @font-face {
+//     font-family: 'Gilroy Extra Bold';
+//     src: url("~@/assets/fonts/Gilroy-Extrabold.otf") format("opentype");
+// }
+
+html {
+  cursor: none;
+}
+
+body {
+  font-family: "Gilroy Extra Bold";
+  margin: 0;
+  background-color: black;
+  color: white;
+  overflow: hidden;
+}
+
+#viewport {
+  overflow: hidden;
+}
+
+#scroll {
+  height: 100vh;
+  width: 7px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: white;
+  z-index: 4;
+
+  .scroll-bar {
+    width: 7px;
+    height: 14vh;
+    top: 0;
+    background: aqua;
+    position: absolute;
+    border-radius: 10px;
+  }
+}
+
+#cursor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  #circle1 {
+    position: absolute;
+    box-shadow: 0 0 1px 0 white inset, 0 0 1px 0 white;
+    border-radius: 50%;
+    background: #fff;
+
+    &.default {
+      animation: circleDefault 0.3s cubic-bezier(0.64, 0.57, 0.67, 1.1) forwards;
+    }
+
+    &.enter {
+      animation: cursorEnter 0.5s forwards;
+    }
+
+    &.leave {
+      animation: cursorLeave 0.3s forwards;
+    }
+  }
+}
+
+@keyframes cursorEnter {
+  from {
+    height: 0px;
+    width: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    border: 0px solid white;
+  }
+  to {
+    height: 14px;
+    width: 14px;
+    margin-top: -7px;
+    margin-left: -7px;
+    border: 1px solid white;
+  }
+}
+
+@keyframes cursorLeave {
+  from {
+    height: 14px;
+    width: 14px;
+    margin-top: -7px;
+    margin-left: -7px;
+    border: 1px solid white;
+  }
+  to {
+    height: 0px;
+    width: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    border: 0px solid white;
+  }
+}
+
+@keyframes circleDefault {
+  from {
+    margin-left: -1.8em;
+    margin-top: -1.8em;
+    width: 3.6em;
+    height: 3.6em;
+    background: white;
+  }
+  to {
+    height: 14px;
+    width: 14px;
+    margin-top: -7px;
+    margin-left: -7px;
+    background: #fff;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0rem;
+}
+
+.projects {
+  text-align: center;
+
+  ul {
+    margin-top: 200px;
+    li {
+      height: 99px;
+      font-family: Gilroy;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 80px;
+      line-height: 99px;
+      letter-spacing: 2px;
+      text-shadow: white 0px 0px 1px, white 0px 0px 1px, white 0px 0px 1px,
+        white 0px 0px 1px, white 0px 0px 1px, white 0px 0px 1px;
+      color: black;
+      transition: 0.3s color;
+      z-index: 1;
+      position: relative;
+      margin-top: 50px;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
