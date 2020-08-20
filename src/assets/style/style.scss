@@ -21,18 +21,18 @@ body {
 
 #scroll {
   height: 100vh;
-  width: 7px;
+  width: 6px;
   position: fixed;
   top: 0;
   right: 0;
-  background: white;
+  background: black;
   z-index: 4;
 
   .scroll-bar {
-    width: 7px;
-    height: 14vh;
+    width: 6px;
+    height: 12vh;
     top: 0;
-    background: aqua;
+    background: white;
     position: absolute;
     border-radius: 10px;
   }
@@ -139,7 +139,7 @@ ul {
       transition: 0.3s color;
       z-index: 1;
       position: relative;
-      margin-top: 50px;
+      margin-bottom: 50px;
 
       &:hover {
         color: white;

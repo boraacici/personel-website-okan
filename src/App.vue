@@ -36,11 +36,8 @@ export default {
       this.$refs.circle1.className = "leave";
     },
     onWheel(event) {
-      console.log(event);
-      this.cursorLeave();
       let viewportRect = this.$refs.viewport.getClientRects()[0];
       let scrollY = viewportRect.y + event.wheelDeltaY;
-      console.log(scrollY);
       if (
         scrollY * -1 > viewportRect.height - window.innerHeight ||
         viewportRect.y >= viewportRect.height - window.innerHeight
@@ -59,8 +56,8 @@ export default {
     updateScrollBar() {
       let viewportRect = this.$refs.viewport.getClientRects()[0];
       let scrollBarY =
-        (((viewportRect.y * -1) / (viewportRect.height - window.innerHeight)) *
-        86);
+        ((viewportRect.y * -1) / (viewportRect.height - window.innerHeight)) *
+        88;
 
       this.$refs.scrollBar.style.top = scrollBarY + "vh";
     },
