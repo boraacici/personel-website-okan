@@ -16,6 +16,11 @@
 <script>
 export default {
   name: "app",
+  data() {
+    return {
+      lastScrollY: null,
+    };
+  },
   mounted() {
     document.getElementById("viewport").addEventListener("wheel", this.onWheel);
   },
@@ -48,7 +53,6 @@ export default {
       if (scrollY > 0) {
         scrollY = 0;
       }
-
       this.$refs.viewport.style.transform = "translateY(" + scrollY + "px)";
 
       this.updateScrollBar();
@@ -58,8 +62,15 @@ export default {
       let scrollBarY =
         ((viewportRect.y * -1) / (viewportRect.height - window.innerHeight)) *
         88;
-
+      if (this.lastScrollY) {
+        this.$refs.cursor.style.top =
+          parseFloat(this.$refs.cursor.style.top) +
+          this.lastScrollY -
+          viewportRect.y +
+          "px";
+      }
       this.$refs.scrollBar.style.top = scrollBarY + "vh";
+      this.lastScrollY = viewportRect.y;
     },
   },
 };
