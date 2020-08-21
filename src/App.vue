@@ -20,6 +20,7 @@ export default {
     return {
       lastScrollY: null,
       scrollTimeline: new gsap.timeline(),
+      scrollFadeInterval: null,
     };
   },
   mounted() {
@@ -71,13 +72,11 @@ export default {
         reversed: true,
       });
       scope.scrollFade.play();
-      if (scope.scrollFade && !scope.scrollFade.isActive()) {
-        this.$refs.scroll.style.opacity = 1;
 
-        if (scope.scrollFadeOut) {
-          scope.scrollFadeOut.paused(true);
-        }
+      if (this.scrollFadeInterval) {
+        clearInterval(this.scrollFadeInterval);
       }
+
       let viewportRect = this.$refs.viewport.getClientRects()[0];
       let scrollBarY =
         ((viewportRect.y * -1) / (viewportRect.height - window.innerHeight)) *
@@ -88,14 +87,13 @@ export default {
         ease: "power3.out",
       });
 
-      setTimeout(() => {
-        if (!scope.scrollFade.isActive()) {
-          scope.scrollFadeOut = gsap.to(this.$refs.scroll, {
-            opacity: 0,
-            duration: 0.5,
-          });
-          scope.scrollFadeOut.play();
-        }
+      this.scrollFadeInterval = setInterval(() => {
+        scope.scrollFadeOut = gsap.to(this.$refs.scroll, {
+          opacity: 0,
+          duration: 0.5,
+        });
+        scope.scrollFadeOut.play();
+        clearInterval(scope.scrollFadeInterval);
       }, 1500);
     },
   },
