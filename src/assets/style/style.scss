@@ -27,6 +27,7 @@ body {
   right: 0;
   background: black;
   z-index: 4;
+  opacity: 0;
 
   .scroll-bar {
     width: 6px;
@@ -39,7 +40,7 @@ body {
 }
 
 #cursor {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
 
