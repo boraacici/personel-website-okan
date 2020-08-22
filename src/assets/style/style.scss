@@ -142,8 +142,11 @@ ul {
       position: relative;
       margin-bottom: 50px;
 
-      &:hover {
-        color: white;
+      .title {
+        display: inline-block;
+        &:hover {
+          color: white;
+        }
       }
     }
   }

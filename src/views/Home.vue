@@ -3,58 +3,43 @@
     <div class="projects">
       <ul>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
         <li>
-          Zaha Hadid Architects
-        </li>
-        <li>
-          Zaha Hadid Architects
-        </li>
-        <li>
-          Zaha Hadid Architects
-        </li>
-        <li>
-          Zaha Hadid Architects
-        </li>
-        <li>
-          Zaha Hadid Architects
-        </li>
-        <li>
-          Zaha Hadid Architects
+          <div class="title">Zaha Hadid Architects</div>
         </li>
       </ul>
     </div>

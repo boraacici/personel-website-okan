@@ -21,6 +21,7 @@ export default {
       lastScrollY: null,
       scrollTimeline: new gsap.timeline(),
       scrollFadeInterval: null,
+      scrollBarY: 0,
     };
   },
   mounted() {
@@ -58,12 +59,30 @@ export default {
 
       gsap.to(this.$refs.viewport, {
         y: scrollY + "px",
-        duration: 0.35,
-        ease: "power3.out",
+        duration: 0.3,
+        ease: "power1.out",
       });
+
+      // gsap.to(this.$refs.viewport, {
+      //   y: scrollY + "px",
+      //   duration: 0.35,
+      //   ease: "power3.out",
+      // });
 
       this.updateScrollBar();
     },
+    // text3dMatrixAnimation(diff, elements) {
+    //   let transform = `matrix3d(1, ${diff / 100}, 0, 0, 0, ${
+    //     1 + Math.abs(diff) / 2000
+    //   }, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)`;
+    //   let animate = gsap.to(elements, {
+    //     duration: 0.15,
+    //     transform: transform,
+    //     ease: "power3.out",
+    //   });
+
+    //   animate.reverse(0);
+    // },
     updateScrollBar() {
       const scope = this;
       this.scrollFade = gsap.to(this.$refs.scroll, {
@@ -78,13 +97,13 @@ export default {
       }
 
       let viewportRect = this.$refs.viewport.getClientRects()[0];
-      let scrollBarY =
+      scope.scrollBarY =
         ((viewportRect.y * -1) / (viewportRect.height - window.innerHeight)) *
         88;
       gsap.to(this.$refs.scrollBar, {
-        y: scrollBarY + "vh",
-        duration: 0.35,
-        ease: "power3.out",
+        y: scope.scrollBarY + "vh",
+        duration: 0.1,
+        ease: "power1.out",
       });
 
       this.scrollFadeInterval = setInterval(() => {
@@ -97,6 +116,15 @@ export default {
       }, 1500);
     },
   },
+  // watch: {
+  //   scrollBarY: function (value, old) {
+  //     let projects = document.querySelectorAll(".projects li .title");
+
+  //     if (projects.length > 0) {
+  //       this.text3dMatrixAnimation(value - old, projects);
+  //     }
+  //   },
+  // },
 };
 </script>
 
