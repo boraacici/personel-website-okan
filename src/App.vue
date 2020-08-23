@@ -59,8 +59,8 @@ export default {
 
       gsap.to(this.$refs.viewport, {
         y: scrollY + "px",
-        duration: 0.3,
-        ease: "power1.out",
+        duration: 0.6,
+        ease: "circ.out",
       });
 
       // gsap.to(this.$refs.viewport, {
@@ -103,7 +103,7 @@ export default {
       gsap.to(this.$refs.scrollBar, {
         y: scope.scrollBarY + "vh",
         duration: 0.1,
-        ease: "power1.out",
+        ease: "circ.out",
       });
 
       this.scrollFadeInterval = setInterval(() => {
