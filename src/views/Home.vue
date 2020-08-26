@@ -37,7 +37,7 @@ export default {
   name: "Home",
   data() {
     return {
-      onHover: false,
+      bgTl: new gsap.timeline(),
       projects: [
         {
           id: "1",
@@ -46,8 +46,7 @@ export default {
           rightImage: "zahahadid-right.jpg",
           year: "2019",
           category: "Web + Mobile + Branding",
-          startColor: "yellow",
-          endColor: "red",
+          backgroundColor: "black",
         },
         {
           id: "2",
@@ -56,8 +55,79 @@ export default {
           rightImage: "trtbelgesel-right.jpg",
           year: "2020",
           category: "Web + Mobile + Branding",
-          startColor: "green",
-          endColor: "gray",
+          backgroundColor: "#2D3E18",
+        },
+        {
+          id: "1",
+          name: "Zaha Hadid Architects",
+          leftImage: "zahahadid-left.jpg",
+          rightImage: "zahahadid-right.jpg",
+          year: "2019",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "black",
+        },
+        {
+          id: "2",
+          name: "TRT Belgesel",
+          leftImage: "trtbelgesel-left.jpg",
+          rightImage: "trtbelgesel-right.jpg",
+          year: "2020",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "#2D3E18",
+        },
+        {
+          id: "1",
+          name: "Zaha Hadid Architects",
+          leftImage: "zahahadid-left.jpg",
+          rightImage: "zahahadid-right.jpg",
+          year: "2019",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "black",
+        },
+        {
+          id: "2",
+          name: "TRT Belgesel",
+          leftImage: "trtbelgesel-left.jpg",
+          rightImage: "trtbelgesel-right.jpg",
+          year: "2020",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "#2D3E18",
+        },
+        {
+          id: "1",
+          name: "Zaha Hadid Architects",
+          leftImage: "zahahadid-left.jpg",
+          rightImage: "zahahadid-right.jpg",
+          year: "2019",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "black",
+        },
+        {
+          id: "2",
+          name: "TRT Belgesel",
+          leftImage: "trtbelgesel-left.jpg",
+          rightImage: "trtbelgesel-right.jpg",
+          year: "2020",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "#2D3E18",
+        },
+        {
+          id: "1",
+          name: "Zaha Hadid Architects",
+          leftImage: "zahahadid-left.jpg",
+          rightImage: "zahahadid-right.jpg",
+          year: "2019",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "black",
+        },
+        {
+          id: "2",
+          name: "TRT Belgesel",
+          leftImage: "trtbelgesel-left.jpg",
+          rightImage: "trtbelgesel-right.jpg",
+          year: "2020",
+          category: "Web + Mobile + Branding",
+          backgroundColor: "#2D3E18",
         },
       ],
       activeProject: null,
@@ -67,7 +137,6 @@ export default {
   components: {},
   methods: {
     titleVisibility(isVisible, entry) {
-      // debugger;
       let element = entry.target;
       if (isVisible && !element.classList.contains("fadeInUp")) {
         element.classList.add("fadeInUp");
@@ -85,9 +154,14 @@ export default {
       );
       projectInfoEl.classList.remove("inactive");
       projectInfoEl.classList.add("active");
+
+      let viewport = document.getElementById("viewport");
+
+      viewport.style.backgroundColor = this.activeProject.backgroundColor;
     },
     mouseleaveTitle(project) {
       this.lastProject = this.activeProject;
+      this.activeProject = null;
 
       let projectInfoEl = document.querySelector(
         `.project-infos [projectid='${this.lastProject.id}']`
@@ -100,6 +174,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home {
+  padding-top: 200px;
+}
 .project-infos {
   .project-info {
     display: none;

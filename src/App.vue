@@ -19,7 +19,6 @@ export default {
   data() {
     return {
       lastScrollY: null,
-      scrollTimeline: new gsap.timeline(),
       scrollFadeInterval: null,
       scrollBarY: 0,
     };
