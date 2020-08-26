@@ -43,6 +43,10 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 40;
+  user-select: none;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
 
   #circle1 {
     position: absolute;
@@ -127,6 +131,7 @@ ul {
   ul {
     margin-top: 200px;
     li {
+      mix-blend-mode: difference;
       height: 99px;
       font-family: Gilroy;
       font-style: normal;
@@ -167,5 +172,30 @@ ul {
   100% {
     opacity: 1;
     transform: translateZ(0);
+  }
+}
+
+@keyframes scaleTo1 {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes opacityTo1 {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleTo0 {
+  to {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes opacityTo0 {
+  to {
+    opacity: 0;
   }
 }
