@@ -11,6 +11,7 @@
     "file-loader": "^6.0.0",
     "gsap": "^3.5.0",
     "vue": "^2.6.11",
+    "vue-observe-visibility": "^0.4.6",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
