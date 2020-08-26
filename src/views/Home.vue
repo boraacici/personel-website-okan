@@ -2,49 +2,30 @@
   <div class="home">
     <div class="projects">
       <ul class="list">
-        <li>
+        <li v-for="project in projects" v-bind:key="project.id">
           <div
-            @mouseenter="mouseenterTitle"
-            @mouseleave="mouseleaveTitle"
+            @mouseenter="mouseenterTitle(project)"
+            @mouseleave="mouseleaveTitle(project)"
             class="title"
             v-observe-visibility="titleVisibility"
-          >Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
-        </li>
-        <li>
-          <div class="title" v-observe-visibility="titleVisibility">Zaha Hadid Architects</div>
+          >{{project.name}}</div>
         </li>
       </ul>
     </div>
     <div class="project-infos">
-      <div class="project-info" :class="onHover ? 'active' : 'inactive'">
-        <span class="category-info">Web + Mobile + Branding</span>
-        <span class="year">2019</span>
+      <div
+        v-for="project in projects"
+        v-bind:key="project.id"
+        class="project-info"
+        :projectId="project.id"
+      >
+        <span class="category-info">{{project.category}}</span>
+        <span class="year">{{project.year}}</span>
         <div class="left-image">
-          <img src="../assets/images/zahahadid-right.jpg" alt />
+          <img :src="require(`../assets/images/${project.leftImage}`)" alt />
         </div>
         <div class="right-image">
-          <img src="../assets/images/zahahadid-right.jpg" alt />
+          <img :src="require(`../assets/images/${project.rightImage}`)" alt />
         </div>
       </div>
     </div>
@@ -57,6 +38,30 @@ export default {
   data() {
     return {
       onHover: false,
+      projects: [
+        {
+          id: "1",
+          name: "Zaha Hadid Architects",
+          leftImage: "zahahadid-left.jpg",
+          rightImage: "zahahadid-right.jpg",
+          year: "2019",
+          category: "Web + Mobile + Branding",
+          startColor: "yellow",
+          endColor: "red",
+        },
+        {
+          id: "2",
+          name: "TRT Belgesel",
+          leftImage: "trtbelgesel-left.jpg",
+          rightImage: "trtbelgesel-right.jpg",
+          year: "2020",
+          category: "Web + Mobile + Branding",
+          startColor: "green",
+          endColor: "gray",
+        },
+      ],
+      activeProject: null,
+      lastProject: null,
     };
   },
   components: {},
@@ -68,13 +73,27 @@ export default {
         element.classList.add("fadeInUp");
       }
     },
-    mouseenterTitle() {
-      console.log("mouseenter");
-      this.onHover = true;
+    mouseenterTitle(project) {
+      if (this.activeProject) {
+        this.lastProject = this.activeProject;
+      }
+
+      this.activeProject = project;
+
+      let projectInfoEl = document.querySelector(
+        `.project-infos [projectid='${this.activeProject.id}']`
+      );
+      projectInfoEl.classList.remove("inactive");
+      projectInfoEl.classList.add("active");
     },
-    mouseleaveTitle() {
-      console.log("mouseleave");
-      this.onHover = false;
+    mouseleaveTitle(project) {
+      this.lastProject = this.activeProject;
+
+      let projectInfoEl = document.querySelector(
+        `.project-infos [projectid='${this.lastProject.id}']`
+      );
+      projectInfoEl.classList.remove("active");
+      projectInfoEl.classList.add("inactive");
     },
   },
 };
@@ -102,13 +121,13 @@ export default {
       display: block;
       .left-image,
       .right-image {
-      transform: scale(1);
-        animation: scaleTo0 .7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        transform: scale(1);
+        animation: scaleTo0 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
       }
 
       .year,
       .category-info {
-        animation: opacityTo0 .7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        animation: opacityTo0 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
       }
     }
     .category-info {
@@ -128,7 +147,7 @@ export default {
     .left-image {
       position: fixed;
       left: 10vh;
-      top: 10vh;
+      top: 5vh;
       transform: scale(0.6);
     }
 
