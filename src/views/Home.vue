@@ -58,7 +58,7 @@ export default {
           backgroundColor: "#2D3E18",
         },
         {
-          id: "1",
+          id: "3",
           name: "Zaha Hadid Architects",
           leftImage: "zahahadid-left.jpg",
           rightImage: "zahahadid-right.jpg",
@@ -67,7 +67,7 @@ export default {
           backgroundColor: "black",
         },
         {
-          id: "2",
+          id: "4",
           name: "TRT Belgesel",
           leftImage: "trtbelgesel-left.jpg",
           rightImage: "trtbelgesel-right.jpg",
@@ -76,7 +76,7 @@ export default {
           backgroundColor: "#2D3E18",
         },
         {
-          id: "1",
+          id: "5",
           name: "Zaha Hadid Architects",
           leftImage: "zahahadid-left.jpg",
           rightImage: "zahahadid-right.jpg",
@@ -85,7 +85,7 @@ export default {
           backgroundColor: "black",
         },
         {
-          id: "2",
+          id: "6",
           name: "TRT Belgesel",
           leftImage: "trtbelgesel-left.jpg",
           rightImage: "trtbelgesel-right.jpg",
@@ -94,7 +94,7 @@ export default {
           backgroundColor: "#2D3E18",
         },
         {
-          id: "1",
+          id: "7",
           name: "Zaha Hadid Architects",
           leftImage: "zahahadid-left.jpg",
           rightImage: "zahahadid-right.jpg",
@@ -103,7 +103,7 @@ export default {
           backgroundColor: "black",
         },
         {
-          id: "2",
+          id: "8",
           name: "TRT Belgesel",
           leftImage: "trtbelgesel-left.jpg",
           rightImage: "trtbelgesel-right.jpg",
@@ -112,7 +112,7 @@ export default {
           backgroundColor: "#2D3E18",
         },
         {
-          id: "1",
+          id: "9",
           name: "Zaha Hadid Architects",
           leftImage: "zahahadid-left.jpg",
           rightImage: "zahahadid-right.jpg",
@@ -121,7 +121,7 @@ export default {
           backgroundColor: "black",
         },
         {
-          id: "2",
+          id: "10",
           name: "TRT Belgesel",
           leftImage: "trtbelgesel-left.jpg",
           rightImage: "trtbelgesel-right.jpg",
@@ -158,6 +158,23 @@ export default {
       let viewport = document.getElementById("viewport");
 
       viewport.style.backgroundColor = this.activeProject.backgroundColor;
+
+      var translateY = this.getTranslateY(viewport);
+      projectInfoEl.querySelector(
+        ".year"
+      ).style.top = `calc(95vh - ${translateY}px)`;
+      projectInfoEl.querySelector(
+        ".category-info"
+      ).style.top = `calc(95vh - ${translateY}px)`;
+      projectInfoEl.querySelector(
+        ".left-image"
+      ).style.top = `calc(5vh - ${translateY}px)`;
+      debugger
+      projectInfoEl.querySelector(
+        ".right-image"
+      ).style.top = `${translateY * -1}px`;
+
+      // debugger;
     },
     mouseleaveTitle(project) {
       this.lastProject = this.activeProject;
@@ -168,6 +185,17 @@ export default {
       );
       projectInfoEl.classList.remove("active");
       projectInfoEl.classList.add("inactive");
+
+      
+      let viewport = document.getElementById("viewport");
+
+      viewport.style.backgroundColor = "black";
+    },
+    getTranslateY(element) {
+      var style = window.getComputedStyle(element);
+      var matrix = new WebKitCSSMatrix(style.webkitTransform);
+
+      return matrix.m42;
     },
   },
 };
