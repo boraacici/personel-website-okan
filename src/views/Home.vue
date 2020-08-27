@@ -57,6 +57,7 @@ export default {
           year: "2020",
           category: "Web + Mobile + Branding",
           backgroundColor: "#2D3E18",
+          status: "SEE_LIVE",
         },
         {
           id: "3",
@@ -177,8 +178,10 @@ export default {
       let circle1 = document.querySelector("#cursor #circle1");
 
       if (this.activeProject.status) {
-        circle1.innerText = this.activeProject.status;
-        circle1.className = `circle-${this.activeProject.status.toLowerCase()}`;
+        circle1.innerText = this.activeProject.status.replace("_", "");
+        circle1.className = `circle-${this.activeProject.status
+          .toLowerCase()
+          .replace("_", "")}`;
       }
     },
     mouseleaveTitle(project) {

@@ -89,6 +89,9 @@ body {
     &.circle-soon {
       animation: circleSoon 0.3s forwards;
     }
+    &.circle-seelive {
+      animation: circleSeeLive 0.3s forwards;
+    }
     &.title-to-default {
       animation: titleToDefault 0.4s forwards;
     }
@@ -141,6 +144,23 @@ body {
     background: #fff;
     padding-top: 36px;
     padding-left: 21px;
+  }
+}
+
+@keyframes circleSeeLive {
+  to {
+    height: 110px;
+    width: 110px;
+    margin-left: -55px;
+    margin-top: -55px;
+    background: transparent;
+    padding-top: 45px;
+    padding-left: 21px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #ffffff;
   }
 }
 
