@@ -15,7 +15,7 @@ export default {};
 
 <style lang="scss" scoped>
 .topbar {
-  position: absolute;
+  position: sticky;
   text-align: center;
   width: 100%;
 
