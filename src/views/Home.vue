@@ -47,6 +47,7 @@ export default {
           year: "2019",
           category: "Web + Mobile + Branding",
           backgroundColor: "black",
+          status: "SOON",
         },
         {
           id: "2",
@@ -169,12 +170,16 @@ export default {
       projectInfoEl.querySelector(
         ".left-image"
       ).style.top = `calc(5vh - ${translateY}px)`;
-      debugger
-      projectInfoEl.querySelector(
-        ".right-image"
-      ).style.top = `${translateY * -1}px`;
+      projectInfoEl.querySelector(".right-image").style.top = `${
+        translateY * -1
+      }px`;
 
-      // debugger;
+      let circle1 = document.querySelector("#cursor #circle1");
+
+      if (this.activeProject.status) {
+        circle1.innerText = this.activeProject.status;
+        circle1.className = `circle-${this.activeProject.status.toLowerCase()}`;
+      }
     },
     mouseleaveTitle(project) {
       this.lastProject = this.activeProject;
@@ -186,10 +191,12 @@ export default {
       projectInfoEl.classList.remove("active");
       projectInfoEl.classList.add("inactive");
 
-      
       let viewport = document.getElementById("viewport");
 
       viewport.style.backgroundColor = "black";
+
+      circle1.className = `title-to-default`;
+      circle1.innerText = "";
     },
     getTranslateY(element) {
       var style = window.getComputedStyle(element);
