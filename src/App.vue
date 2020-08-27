@@ -5,6 +5,7 @@
       <div ref="circle2" id="circle2"></div>
     </div>
     <div id="viewport" ref="viewport" @mousemove="cursorMove" @mouseleave="cursorLeave">
+      <topbar />
       <router-view />
     </div>
     <div id="scroll" ref="scroll">
@@ -14,8 +15,11 @@
 </template>
 
 <script>
+import Topbar from "./components/Topbar";
+
 export default {
   name: "app",
+  components: { topbar: Topbar },
   data() {
     return {
       lastScrollY: null,

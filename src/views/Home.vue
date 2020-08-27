@@ -178,7 +178,7 @@ export default {
       let circle1 = document.querySelector("#cursor #circle1");
 
       if (this.activeProject.status) {
-        circle1.innerText = this.activeProject.status.replace("_", "");
+        circle1.innerText = this.activeProject.status.replace("_", " ");
         circle1.className = `circle-${this.activeProject.status
           .toLowerCase()
           .replace("_", "")}`;
