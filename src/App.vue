@@ -6,7 +6,9 @@
     </div>
     <div id="viewport" ref="viewport" @mousemove="cursorMove" @mouseleave="cursorLeave">
       <topbar />
-      <router-view />
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </div>
     <div id="scroll" ref="scroll">
       <span ref="scrollBar" class="scroll-bar"></span>
@@ -22,6 +24,7 @@ export default {
   components: { topbar: Topbar },
   data() {
     return {
+      transitionName: "",
       lastScrollY: null,
       scrollFadeInterval: null,
       scrollBarY: 0,
@@ -119,15 +122,6 @@ export default {
       }, 1500);
     },
   },
-  // watch: {
-  //   scrollBarY: function (value, old) {
-  //     let projects = document.querySelectorAll(".projects li .title");
-
-  //     if (projects.length > 0) {
-  //       this.text3dMatrixAnimation(value - old, projects);
-  //     }
-  //   },
-  // },
 };
 </script>
 
