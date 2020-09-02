@@ -3,16 +3,14 @@
     <!-- <div ref="transtionElement" class="transition-page">
       <h1>Okan Yıkmış</h1>
       <p>SELECTED FOLIO 2020</p>
-    </div> -->
+    </div>-->
     <div id="cursor" ref="cursor">
       <div id="circle1" ref="circle1"></div>
       <div ref="circle2" id="circle2"></div>
     </div>
     <div id="viewport" ref="viewport" @mousemove="cursorMove" @mouseleave="cursorLeave">
       <topbar />
-      <transition
-        name="slide-fade"
-      >
+      <transition name="slide-fade">
         <router-view></router-view>
       </transition>
     </div>
@@ -39,7 +37,16 @@ export default {
     };
   },
   mounted() {
-    document.getElementById("viewport").addEventListener("wheel", this.onWheel);
+    this.$refs.viewport.addEventListener("wheel", this.onWheel);
+
+    if ("ontouchstart" in window) {
+      this.$refs.viewport.addEventListener(
+        "touchstart",
+        this.touchStartHandler
+      );
+      this.$refs.viewport.addEventListener("touchmove", this.touchMoveHandler);
+      this.$refs.viewport.addEventListener("touchend", this.touchEndHandler);
+    }
   },
   methods: {
     transtionBeforeEnter() {
@@ -58,7 +65,7 @@ export default {
         opacity: 1,
         duration: 0.1,
       });
-      setTimeout(()=>{}, 1000)
+      setTimeout(() => {}, 1000);
     },
     transitionEnter() {
       this.transitionTl.to(this.$refs.transtionElement, {
@@ -90,6 +97,38 @@ export default {
     onWheel(event) {
       let viewportRect = this.$refs.viewport.getClientRects()[0];
       let scrollY = viewportRect.y + event.wheelDeltaY;
+      if (
+        scrollY * -1 > viewportRect.height - window.innerHeight ||
+        viewportRect.y >= viewportRect.height - window.innerHeight
+      ) {
+        scrollY = (viewportRect.height - window.innerHeight) * -1;
+      }
+
+      if (scrollY > 0) {
+        scrollY = 0;
+      }
+
+      gsap.to(this.$refs.viewport, {
+        y: scrollY + "px",
+        duration: 0.6,
+        ease: "circ.out",
+      });
+
+      this.updateScrollBar();
+    },
+    touchStartHandler(event) {
+      // debugger;
+      this.touchStart = event.touches[0].pageY;
+    },
+    touchMoveHandler(event) {
+      // debugger;
+    },
+    touchEndHandler(event) {
+      // debugger;
+      this.touchEnd = event.changedTouches[0].pageY;
+
+      let viewportRect = this.$refs.viewport.getClientRects()[0];
+      let scrollY = viewportRect.y + this.touchEnd - this.touchStart;
       if (
         scrollY * -1 > viewportRect.height - window.innerHeight ||
         viewportRect.y >= viewportRect.height - window.innerHeight

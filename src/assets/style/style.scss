@@ -74,7 +74,7 @@ h2 {
     font-style: normal;
     font-weight: 800;
     font-size: 60px;
-    line-height: 88px;
+    line-height: 6rem;
     letter-spacing: 1px;
     color: #000000;
     place-self: end;
@@ -85,7 +85,7 @@ h2 {
     font-style: normal;
     font-weight: 300;
     font-size: 32px;
-    line-height: 92px;
+    line-height: 6rem;
     letter-spacing: 1px;
     color: #000000;
     align-self: baseline;
@@ -268,7 +268,7 @@ ul {
       font-style: normal;
       font-weight: bold;
       font-size: 5rem;
-      line-height: 99px;
+      line-height: 6rem;
       letter-spacing: 2px;
       text-shadow: white 0px 0px 1px, white 0px 0px 1px, white 0px 0px 1px,
         white 0px 0px 1px, white 0px 0px 1px, white 0px 0px 1px;
@@ -335,7 +335,7 @@ ul {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   html{
-    font-size: 8px;
+    font-size: 6px;
   }
 }
 
