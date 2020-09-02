@@ -5,6 +5,16 @@ $font-dir: "/fonts/";
   src: url("#{$font-dir}/Gilroy/Gilroy-Regular.otf");
 }
 
+@font-face {
+  font-family: "Gilroy-Light";
+  src: url("#{$font-dir}/Gilroy/Gilroy-Light.otf");
+}
+
+@font-face {
+  font-family: "Gilroy-Thin";
+  src: url("#{$font-dir}/Gilroy/Gilroy-Thin.otf");
+}
+
 html {
   cursor: none;
 }

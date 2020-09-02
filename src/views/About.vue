@@ -1,55 +1,28 @@
 <template>
   <div class="about">
-    <div class="about-me">
-      <div class="photo">
+    <div class="row">
+      <div class="my-photo">
         <img src="../assets/images/okanuix.jpg" alt />
       </div>
-      <div class="me">
-        <h1>
-          PRODUCT
-          <span>UI UX</span>
-        </h1>
-        <h2>DESIGNER</h2>
-        <p class="who-am-i">I am Okan Yıkmış</p>
-        <p>I’m Bogdan, a self-taught digital product designer, working in the industry for over 5 years.</p>
-        <p>Focused on transforming ideas into efficient user experiences, packaged in accessible and visually pleasing interfaces. I’m deeply passionate about-me product design at both a strategic and hands-on level. On the other hand, I have the knowledge to bridge the gap between design and implementation and build maintainable, fast, and accessible interfaces.</p>
+      <div class="about-me">
+        <div class="text text-product"></div>
+        <div class="text text-ui-ux"></div>
+        <div class="text text-designer"></div>
+        <p>
+          <span class="bold">Okan Yıkmış</span> is senior product designer, working in the industry for over 10+ Years
+        </p>
+        <p
+          class="p2"
+        >I craft interactive stories, responsible for designing interactive experiences and create strategies for services from the customer’s perspective is essential for delivering an end-to-end experience and concept strategies with great care.</p>
+        <p class="p2">
+          Currently based in Istanbul as a
+          <span class="bold">Senior Product Designer</span> for
+          <span class="bold">TRT</span>
+        </p>
+        <p class="p3">Turkish is my mother tongue. I am fluent in english and german.</p>
       </div>
     </div>
-    <div class="extras">
-      <div class="design-direct">
-        <img src="../assets/images/design-direct.jpg" alt />
-        <h1 style=" left: 4vw; margin-top: 16vh;">I DESIGN &</h1>
-        <h1 style=" margin-top: 30vh; margin-left: 13vw; ">DIRECT</h1>
-      </div>
-      <div class="do-something-great">
-        <img src="../assets/images/do-something-great.jpg" alt />
-        <div class="categories">
-          <ul>
-            <li>Brand Strategy</li>
-            <li>Product Strategy</li>
-            <li>Research & Analysis</li>
-            <li>Service Design</li>
-            <li>Content Strategy</li>
-            <li>Venture Building</li>
-          </ul>
-          <ul>
-            <li>UX / UI</li>
-            <li>Web Design</li>
-            <li>App Design</li>
-            <li>Visual Identities</li>
-            <li>Interaction Design</li>
-            <li>Motion Design</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="contact-me">
-      <div class="lets-do-together">
-        <img src="../assets/images/hello.jpg" alt />
-        <p>Let’s do a project together</p>
-        <span>sayhello@okan.co</span>
-      </div>
-    </div>
+    <div class="row"></div>
   </div>
 </template>
 
@@ -58,149 +31,77 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.about-me {
-  margin-top: 20vh;
-  padding-left: 14vw;
-  padding-right: 12vw;
-  display: flex;
-
-  .photo {
-    display: inline-block;
-    margin-right: 8vw;
-
-    img {
-      height: 700px;
-    }
-  }
-
-  .me {
-    padding-top: 7vh;
-
-    h1 {
-      font-family: Gilroy;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 100px;
-      line-height: 124px;
-      margin-left: -17vw;
-
-      span {
-        font-family: Gilroy;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 100px;
-        line-height: 124px;
-      }
-    }
-
-    h2 {
-      font-family: Gilroy;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 100px;
-      line-height: 124px;
-      margin-left: -3vw;
-    }
-
-    .who-am-i {
-      font-family: Gilroy;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 32px;
-      line-height: 38px;
-
-      color: #ffffff;
-    }
-
-    p {
-      font-family: Gilroy;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 28px;
-      /* or 156% */
-
-      letter-spacing: 0.8px;
-
-      color: #ffffff;
-    }
-  }
-}
-
-.extras {
-  display: flex;
-
-  & > div {
-    width: 40%;
-  }
-
-  .design-direct {
-    margin-top: 291px;
+.about {
+  .row {
     display: flex;
-
-    img {
-      opacity: 0.6;
-    }
-
-    h1 {
-      font-family: Gilroy;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 100px;
-      line-height: 124px;
-      position: absolute;
-    }
-  }
-
-  .do-something-great {
-    .categories {
-      display: flex;
-      font-family: Gilroy;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 28px;
-      line-height: 34px;
-
-      color: #ffffff;
-
-      ul {
-        margin-right: 7vw;
-
-        li {
-          margin-bottom: 3vh;
-        }
-      }
-    }
+    flex-basis: 50%;
+    padding: 0 400px;
+    margin-top: 200px;
   }
 }
 
-.contact-me {
-  .lets-do-together {
-    text-align: center;
-    margin-bottom: 100px;
+.about-me {
+  margin-left: 100px;
 
-    p {
+  p {
+    margin-left: 20px !important;
+    font-family: Gilroy-Light;
+    font-size: 24px;
+    line-height: 38px;
+    margin: 30px 0;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+
+    span.bold {
       font-family: Gilroy;
-      font-style: normal;
       font-weight: bold;
-      font-size: 50px;
-      line-height: 28px;
-      /* identical to box height, or 56% */
-
-      color: #ffffff;
-      position: relative;
-      margin-top: -110px;
+      display: contents;
     }
+  }
 
-    span {
-      font-family: Gilroy;
-      font-style: normal;
-      font-weight: 300;
-      font-size: 32px;
-      line-height: 28px;
-      /* identical to box height, or 87% */
-      color: #ffffff;
-    }
+  .p2 {
+    font-size: 18px;
+    line-height: 28px;
+
+    letter-spacing: 0.2px;
+  }
+
+  .p3 {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    opacity: 0.5;
+  }
+}
+
+.text {
+  display: block;
+  background-size: 100% 100%;
+
+  &.text-product {
+    display: inline-block;
+    background: url(../assets/images/product.svg);
+    margin-top: 80px;
+    margin-left: -490px;
+    width: 455.15px;
+    height: 75.2px;
+  }
+
+  &.text-ui-ux {
+    display: inline-block;
+    background: url(../assets/images/ui-ux.svg);
+    width: 235.25px;
+    height: 71.4px;
+    margin-left: 30px;
+  }
+
+  &.text-designer {
+    background: url(../assets/images/designer.svg);
+    width: 464.31px;
+    height: 75.2px;
+    margin-top: 35px;
   }
 }
 </style>
