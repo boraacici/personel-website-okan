@@ -122,9 +122,6 @@ export default {
     },
     touchMoveHandler(event) {
       // debugger;
-    },
-    touchEndHandler(event) {
-      // debugger;
       this.touchEnd = event.changedTouches[0].pageY;
 
       let viewportRect = this.$refs.viewport.getClientRects()[0];
@@ -146,7 +143,12 @@ export default {
         ease: "circ.out",
       });
 
+      this.touchStart = event.changedTouches[0].pageY;
+
       this.updateScrollBar();
+    },
+    touchEndHandler(event) {
+      // debugger;
     },
     updateScrollBar() {
       const scope = this;
