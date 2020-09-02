@@ -46,11 +46,17 @@ h2 {
   transition: background 0.7s ease-out;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1.5s;
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(-100px);
   opacity: 0;
 }
 
@@ -261,7 +267,7 @@ ul {
       font-family: Gilroy;
       font-style: normal;
       font-weight: bold;
-      font-size: 80px;
+      font-size: 5rem;
       line-height: 99px;
       letter-spacing: 2px;
       text-shadow: white 0px 0px 1px, white 0px 0px 1px, white 0px 0px 1px,
@@ -323,5 +329,33 @@ ul {
 @keyframes opacityTo0 {
   to {
     opacity: 0;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  html{
+    font-size: 8px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  html{
+    font-size: 10px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  html{
+    font-size: 15px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .project-infos{
+    display: block !important;
   }
 }

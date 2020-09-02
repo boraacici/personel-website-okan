@@ -49,22 +49,22 @@
         </ul>
       </div>
     </div>
-    <div class="row">
-      <ul class="brands">
+    <div class="brands">
+      <ul>
         <li>
-          <img src alt />
+          <img src="../assets/images/Turkish-Airlines.svg" alt />
         </li>
         <li>
-          <img src alt />
+          <img src="../assets/images/TRT-World.svg" alt />
         </li>
         <li>
-          <img src alt />
+          <img src="../assets/images/turkcell.svg" alt />
         </li>
         <li>
-          <img src alt />
+          <img src="../assets/images/garanti.svg" alt />
         </li>
         <li>
-          <img src alt />
+          <img src="../assets/images/trt.svg" alt />
         </li>
       </ul>
     </div>
@@ -80,6 +80,17 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+.brands {
+  display: flex;
+  place-content: center;
+  margin-bottom: 250px;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+  }
+}
 ul {
   font-family: Gilroy-Light;
   font-size: 24px;

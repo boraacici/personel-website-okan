@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div ref="transtionElement" class="transition-page">
+    <!-- <div ref="transtionElement" class="transition-page">
       <h1>Okan Yıkmış</h1>
       <p>SELECTED FOLIO 2020</p>
-    </div>
+    </div> -->
     <div id="cursor" ref="cursor">
       <div id="circle1" ref="circle1"></div>
       <div ref="circle2" id="circle2"></div>
@@ -11,11 +11,7 @@
     <div id="viewport" ref="viewport" @mousemove="cursorMove" @mouseleave="cursorLeave">
       <topbar />
       <transition
-        v-bind:css="false"
-        v-on:before-enter="transtionBeforeEnter"
-        v-on:enter="transitionEnter"
-        v-on:leave="transitionLeave"
-        name="fade"
+        name="slide-fade"
       >
         <router-view></router-view>
       </transition>
