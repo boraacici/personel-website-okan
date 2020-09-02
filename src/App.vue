@@ -6,7 +6,11 @@
     </div>
     <div id="viewport" ref="viewport" @mousemove="cursorMove" @mouseleave="cursorLeave">
       <topbar />
-      <transition name="fade" mode="out-in">
+      <transition
+        name="router-anim"
+        enter-active-class="animated fadeInDown"
+        leave-active-class="animated fadeOutDown"
+      >
         <router-view />
       </transition>
     </div>
@@ -127,4 +131,5 @@ export default {
 
 <style lang="scss">
 @import "assets/style/style.scss";
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
 </style>

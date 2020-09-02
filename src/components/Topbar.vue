@@ -1,6 +1,6 @@
 <template>
   <div class="topbar">
-    <span class="sign">O</span>
+    <span class="sign">Okan</span>
     <span class="center-info">2020 Folio</span>
     <div class="menu">
       <router-link to="/">Works</router-link>
@@ -23,13 +23,11 @@ export default {};
     position: absolute;
     left: 4vh;
     top: 3vh;
-    font-family: Axiforma;
     font-style: normal;
     font-weight: bold;
-    font-size: 32px;
-    line-height: 53px;
+    font-size: 24px;
+    line-height: 39px;
     color: #ffffff;
-    float: left;
   }
 
   .center-info {
