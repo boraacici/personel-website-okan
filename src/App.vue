@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div ref="transtionElement" class="transition-page">
+      <h1>Okan Yıkmış</h1>
+      <p>SELECTED FOLIO 2020</p>
+    </div>
     <div id="cursor" ref="cursor">
       <div id="circle1" ref="circle1"></div>
       <div ref="circle2" id="circle2"></div>
@@ -7,11 +11,13 @@
     <div id="viewport" ref="viewport" @mousemove="cursorMove" @mouseleave="cursorLeave">
       <topbar />
       <transition
-        name="router-anim"
-        enter-active-class="animated fadeInDown"
-        leave-active-class="animated fadeOutDown"
+        v-bind:css="false"
+        v-on:before-enter="transtionBeforeEnter"
+        v-on:enter="transitionEnter"
+        v-on:leave="transitionLeave"
+        name="fade"
       >
-        <router-view />
+        <router-view></router-view>
       </transition>
     </div>
     <div id="scroll" ref="scroll">
@@ -32,12 +38,44 @@ export default {
       lastScrollY: null,
       scrollFadeInterval: null,
       scrollBarY: 0,
+      transitionTl: gsap.timeline(),
+      transitionTl2: gsap.timeline(),
     };
   },
   mounted() {
     document.getElementById("viewport").addEventListener("wheel", this.onWheel);
   },
   methods: {
+    transtionBeforeEnter() {
+      this.transitionTl.fromTo(
+        this.$refs.transtionElement,
+        {
+          width: "100vw",
+          height: "0",
+        },
+        {
+          height: "100vh",
+          duration: 0.9,
+        }
+      );
+      this.transitionTl2.to(this.$refs.transtionElement.children, {
+        opacity: 1,
+        duration: 0.1,
+      });
+      setTimeout(()=>{}, 1000)
+    },
+    transitionEnter() {
+      this.transitionTl.to(this.$refs.transtionElement, {
+        width: 0,
+        duration: 0.9,
+      });
+      this.transitionTl2.to(this.$refs.transtionElement.children, {
+        opacity: 0,
+        delay: 1,
+        duration: 0.3,
+      });
+    },
+    transitionLeave() {},
     cursorMove(event) {
       if (
         this.$refs.circle1.className === "" ||
@@ -73,26 +111,8 @@ export default {
         ease: "circ.out",
       });
 
-      // gsap.to(this.$refs.viewport, {
-      //   y: scrollY + "px",
-      //   duration: 0.35,
-      //   ease: "power3.out",
-      // });
-
       this.updateScrollBar();
     },
-    // text3dMatrixAnimation(diff, elements) {
-    //   let transform = `matrix3d(1, ${diff / 100}, 0, 0, 0, ${
-    //     1 + Math.abs(diff) / 2000
-    //   }, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)`;
-    //   let animate = gsap.to(elements, {
-    //     duration: 0.15,
-    //     transform: transform,
-    //     ease: "power3.out",
-    //   });
-
-    //   animate.reverse(0);
-    // },
     updateScrollBar() {
       const scope = this;
       this.scrollFade = gsap.to(this.$refs.scroll, {
@@ -131,5 +151,4 @@ export default {
 
 <style lang="scss">
 @import "assets/style/style.scss";
-@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
 </style>
