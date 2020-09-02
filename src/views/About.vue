@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <div class="row">
+    <div class="row" style="margin-left: 100px">
       <div class="my-photo">
         <img src="../assets/images/okanuix.jpg" alt />
       </div>
@@ -22,7 +22,56 @@
         <p class="p3">Turkish is my mother tongue. I am fluent in english and german.</p>
       </div>
     </div>
-    <div class="row"></div>
+    <div class="row my-expertise-background" style="margin-left: -100px">
+      <div class="my-expertise-1">
+        <div class="title"></div>
+        <ul>
+          <li>Research & Analysis</li>
+          <li>UX Brand Strategies</li>
+          <li>Whiteboard Concept Sessions</li>
+          <li>Wireframes Moodboards</li>
+          <li>Persona Research Interactive</li>
+          <li>Screen Prototypes</li>
+          <li>Pre-visualization</li>
+          <li>Process Customer</li>
+          <li>Journey Research</li>
+        </ul>
+      </div>
+      <div class="my-expertise-2">
+        <ul>
+          <li>Visual Designs & Specs</li>
+          <li>Web Design</li>
+          <li>App Design</li>
+          <li>Visual Identities</li>
+          <li>Interaction Design</li>
+          <li>Real Prototypes</li>
+          <li>Motion Design for UI Elements</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <ul class="brands">
+        <li>
+          <img src alt />
+        </li>
+        <li>
+          <img src alt />
+        </li>
+        <li>
+          <img src alt />
+        </li>
+        <li>
+          <img src alt />
+        </li>
+        <li>
+          <img src alt />
+        </li>
+      </ul>
+    </div>
+    <div class="lets-do">
+      <p class="lets">Let’s do a project together</p>
+      <a href="mailto: okanyikmis@gmail.com">Contact with me</a>
+    </div>
   </div>
 </template>
 
@@ -31,13 +80,50 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+ul {
+  font-family: Gilroy-Light;
+  font-size: 24px;
+  line-height: 52px;
+  /* or 217% */
+  color: #ffffff;
+  margin-top: 55px;
+
+  li {
+    margin-bottom: 5px;
+  }
+}
 .about {
   .row {
     display: flex;
-    flex-basis: 50%;
+    // flex-basis: 50%;
+    flex: 1 1 auto;
     padding: 0 400px;
     margin-top: 200px;
   }
+}
+
+.my-expertise-background {
+  background: url(../assets/images/my-expertise-background.png);
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+  background-position: 190px 0px;
+}
+
+.my-expertise-1 {
+  height: 898px;
+
+  .title {
+    background: url(../assets/images/my-expertise.svg);
+    background-size: 100% 100%;
+    width: 471px;
+    height: 99px;
+    margin-left: -170px;
+  }
+}
+
+.my-expertise-2 {
+  margin-left: 490px;
+  margin-top: 99px;
 }
 
 .about-me {
@@ -49,7 +135,6 @@ export default {};
     font-size: 24px;
     line-height: 38px;
     margin: 30px 0;
-
     display: flex;
     align-items: center;
     letter-spacing: 0.2px;
@@ -103,5 +188,28 @@ export default {};
     height: 75.2px;
     margin-top: 35px;
   }
+}
+
+.lets-do {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.lets {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 28px;
+  color: #ffffff;
+}
+
+a {
+  font-family: Gilroy-Light;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 28px;
+  /* identical to box height, or 100% */
+  color: #ffffff;
+  text-decoration: none;
+  cursor: none;
 }
 </style>
