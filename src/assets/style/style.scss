@@ -337,6 +337,12 @@ ul {
   html{
     font-size: 6px;
   }
+
+  .topbar{
+    .center-info{
+      display: none;
+    }
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
