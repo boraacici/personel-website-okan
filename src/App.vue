@@ -118,34 +118,40 @@ export default {
     },
     touchStartHandler(event) {
       // debugger;
-      this.touchStart = event.touches[0].pageY;
+      // this.touchStart = event.touches[0].pageY;
     },
     touchMoveHandler(event) {
-      // debugger;
-      this.touchEnd = event.changedTouches[0].pageY;
+      if (this.touchStart) {
+        this.touchEnd = event.changedTouches[0].pageY;
 
-      let viewportRect = this.$refs.viewport.getClientRects()[0];
-      let scrollY = (viewportRect.y + this.touchEnd - this.touchStart) * 1.1;
-      if (
-        scrollY * -1 > viewportRect.height - window.innerHeight ||
-        viewportRect.y >= viewportRect.height - window.innerHeight
-      ) {
-        scrollY = (viewportRect.height - window.innerHeight) * -1;
+        let viewportRect = this.$refs.viewport.getClientRects()[0];
+        let scrollY = (viewportRect.y + (this.touchEnd - this.touchStart) * 2);
+        if (
+          scrollY * -1 > viewportRect.height - window.innerHeight ||
+          viewportRect.y >= viewportRect.height - window.innerHeight
+        ) {
+          scrollY = (viewportRect.height - window.innerHeight) * -1;
+        }
+
+        if (scrollY > 0) {
+          scrollY = 0;
+        }
+
+        gsap.to(this.$refs.viewport, {
+          y: scrollY + "px",
+          duration: 0.6,
+          ease: "circ.out",
+        });
+
+        this.touchStart = event.changedTouches[0].pageY;
+        setTimeout(() => {
+          this.touchStart = null;
+        }, 300);
+
+        this.updateScrollBar();
+      } else {
+        this.touchStart = event.changedTouches[0].pageY;
       }
-
-      if (scrollY > 0) {
-        scrollY = 0;
-      }
-
-      gsap.to(this.$refs.viewport, {
-        y: scrollY + "px",
-        duration: 0.6,
-        ease: "circ.out",
-      });
-
-      this.touchStart = event.changedTouches[0].pageY;
-
-      this.updateScrollBar();
     },
     touchEndHandler(event) {
       // debugger;
