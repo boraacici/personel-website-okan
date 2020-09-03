@@ -25,7 +25,7 @@ export default {};
     top: 3vh;
     font-style: normal;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 1.5rem;
     line-height: 39px;
     color: #ffffff;
   }
@@ -53,7 +53,7 @@ export default {};
       margin-left: 38px;
       opacity: 0.3;
       transition: opacity 0.3s;
-      font-size: 2.5rem;
+      font-size: 1.1rem;
 
       &:hover {
         opacity: 1;
