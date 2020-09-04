@@ -125,7 +125,7 @@ export default {
         this.touchEnd = event.changedTouches[0].pageY;
 
         let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 2;
+        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1;
         if (
           scrollY * -1 > viewportRect.height - window.innerHeight ||
           viewportRect.y >= viewportRect.height - window.innerHeight
@@ -143,8 +143,6 @@ export default {
           ease: "circ.out",
         });
 
-        this.touchStart = event.changedTouches[0].pageY;
-
         this.updateScrollBar();
       } else {
         this.touchStart = event.changedTouches[0].pageY;
@@ -155,7 +153,7 @@ export default {
         this.touchEnd = event.changedTouches[0].pageY;
 
         let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 2;
+        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1;
         if (
           scrollY * -1 > viewportRect.height - window.innerHeight ||
           viewportRect.y >= viewportRect.height - window.innerHeight
