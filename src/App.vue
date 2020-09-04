@@ -125,7 +125,8 @@ export default {
         this.touchEnd = event.changedTouches[0].pageY;
 
         let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 2;
+        console.log(this.touchEnd - this.touchStart);
+        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1.5;
         if (
           scrollY * -1 > viewportRect.height - window.innerHeight ||
           viewportRect.y >= viewportRect.height - window.innerHeight
@@ -139,13 +140,13 @@ export default {
 
         gsap.to(this.$refs.viewport, {
           y: scrollY + "px",
-          duration: 0.2,
+          duration: 0.1,
           ease: "circ.out",
         });
 
         this.touchStart = event.changedTouches[0].pageY;
 
-        this.updateScrollBar();
+        this.updateScrollBar(0.1);
       } else {
         this.touchStart = event.changedTouches[0].pageY;
       }
@@ -175,7 +176,7 @@ export default {
       //   this.touchStart = event.changedTouches[0].pageY;
       // }
     },
-    updateScrollBar() {
+    updateScrollBar(duration = 0.1) {
       const scope = this;
       this.scrollFade = gsap.to(this.$refs.scroll, {
         opacity: 1,
@@ -194,7 +195,7 @@ export default {
         88;
       gsap.to(this.$refs.scrollBar, {
         y: scope.scrollBarY + "vh",
-        duration: 0.1,
+        duration: duration,
         ease: "circ.out",
       });
 
