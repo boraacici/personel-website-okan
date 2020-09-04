@@ -125,7 +125,7 @@ export default {
         this.touchEnd = event.changedTouches[0].pageY;
 
         let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1;
+        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * .5;
         if (
           scrollY * -1 > viewportRect.height - window.innerHeight ||
           viewportRect.y >= viewportRect.height - window.innerHeight
@@ -139,7 +139,7 @@ export default {
 
         gsap.to(this.$refs.viewport, {
           y: scrollY + "px",
-          duration: 0.6,
+          duration: 0.2,
           ease: "circ.out",
         });
 
@@ -167,7 +167,7 @@ export default {
 
         gsap.to(this.$refs.viewport, {
           y: scrollY + "px",
-          duration: 0.6,
+          duration: 0.2,
           ease: "circ.out",
         });
 
