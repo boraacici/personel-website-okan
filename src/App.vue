@@ -118,14 +118,14 @@ export default {
     },
     touchStartHandler(event) {
       // debugger;
-      this.touchStart = event.touches[0].pageY;
+      this.touchStart = event.changedTouches[0].pageY;
     },
     touchMoveHandler(event) {
       if (this.touchStart) {
         this.touchEnd = event.changedTouches[0].pageY;
 
         let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * .5;
+        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1.2;
         if (
           scrollY * -1 > viewportRect.height - window.innerHeight ||
           viewportRect.y >= viewportRect.height - window.innerHeight
@@ -142,6 +142,8 @@ export default {
           duration: 0.2,
           ease: "circ.out",
         });
+
+        this.touchStart = event.changedTouches[0].pageY;
 
         this.updateScrollBar();
       } else {
@@ -149,34 +151,29 @@ export default {
       }
     },
     touchEndHandler(event) {
-      if (this.touchStart) {
-        this.touchEnd = event.changedTouches[0].pageY;
-
-        let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1;
-        if (
-          scrollY * -1 > viewportRect.height - window.innerHeight ||
-          viewportRect.y >= viewportRect.height - window.innerHeight
-        ) {
-          scrollY = (viewportRect.height - window.innerHeight) * -1;
-        }
-
-        if (scrollY > 0) {
-          scrollY = 0;
-        }
-
-        gsap.to(this.$refs.viewport, {
-          y: scrollY + "px",
-          duration: 0.2,
-          ease: "circ.out",
-        });
-
-        this.touchStart = event.changedTouches[0].pageY;
-
-        this.updateScrollBar();
-      } else {
-        this.touchStart = event.changedTouches[0].pageY;
-      }
+      // if (this.touchStart) {
+      //   this.touchEnd = event.changedTouches[0].pageY;
+      //   let viewportRect = this.$refs.viewport.getClientRects()[0];
+      //   let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1;
+      //   if (
+      //     scrollY * -1 > viewportRect.height - window.innerHeight ||
+      //     viewportRect.y >= viewportRect.height - window.innerHeight
+      //   ) {
+      //     scrollY = (viewportRect.height - window.innerHeight) * -1;
+      //   }
+      //   if (scrollY > 0) {
+      //     scrollY = 0;
+      //   }
+      //   gsap.to(this.$refs.viewport, {
+      //     y: scrollY + "px",
+      //     duration: 0.2,
+      //     ease: "circ.out",
+      //   });
+      //   this.touchStart = event.changedTouches[0].pageY;
+      //   this.updateScrollBar();
+      // } else {
+      //   this.touchStart = event.changedTouches[0].pageY;
+      // }
     },
     updateScrollBar() {
       const scope = this;
