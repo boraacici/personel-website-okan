@@ -17,6 +17,7 @@ $font-dir: "/fonts/";
 
 html {
   cursor: none;
+  font-size: 16px;
 }
 
 body {
@@ -261,6 +262,8 @@ ul {
   text-align: center;
 
   ul {
+    position: relative;
+    z-index: 20;
     li {
       mix-blend-mode: difference;
       height: 99px;
@@ -332,36 +335,172 @@ ul {
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 425px) {
   html{
-    font-size: 6px;
+    font-size: 8px !important;
   }
+  .about {
+    .row {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+      &.my-expertise-background {
+        background-size: 400% 100%;
+        background-repeat: no-repeat;
+        background-position: -722px -07px;
+      }
 
-  .topbar{
-    .center-info{
-      display: none;
+      .my-expertise-1 {
+        .title {
+          width: 295px;
+          height: 59px;
+        }
+      }
+      .text {
+        background-size: 100% !important;
+        background-repeat: no-repeat !important;
+
+        &.text-product {
+          width: 302.62px;
+          height: 50px;
+        }
+
+        &.text-ui-ux {
+          width: 138.38px;
+          height: 42px;
+        }
+
+        &.text-designer {
+          width: 302.62px;
+          height: 49.01px;
+          margin-bottom: 113px !important;
+        }
+      }
     }
   }
 }
 
+@media only screen and (max-width: 425px) {
+  .about {
+    .row {
+      margin-top: 120px !important;
+
+      .my-photo {
+        right: 0 !important;
+      }
+
+      div.text.text-product {
+        margin-top: 49px !important;
+      }
+    }
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 6px;
+  }
+
+  .topbar {
+    .center-info {
+      display: none;
+    }
+  }
+
+  #cursor{
+    display: none;
+  }
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  html{
+@media only screen and (max-width: 600px) {
+  html {
     font-size: 10px;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  html{
+@media only screen and (max-width: 768px) {
+  html {
     font-size: 15px;
+  }
+
+  .brands ul {
+    margin-top: 250px !important;
+  }
+
+  .about {
+    .row {
+      .my-expertise-background {
+        background-size: 100%;
+        background-position: 10px;
+      }
+      .my-expertise-1 {
+        height: unset;
+      }
+      .my-expertise-2 {
+        margin-left: 0;
+        margin-top: 0;
+      }
+      .my-photo {
+        img {
+          width: 60vw;
+        }
+      }
+
+      .brands ul {
+        margin-top: 250px;
+      }
+
+      .text {
+        margin-left: 0 !important;
+        margin-bottom: 8px !important;
+        margin-top: 8px !important;
+
+        &.text-product {
+          margin-top: 120px !important;
+        }
+      }
+    }
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .project-infos{
+@media only screen and (max-width: 992px) {
+  .project-infos {
     display: block !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+  .about {
+    .row {
+      grid-auto-flow: dense;
+
+      .my-photo {
+        position: absolute;
+        z-index: 0;
+        right: 4rem;
+      }
+
+      .about-me {
+        margin-left: 0px;
+        position: relative;
+
+        .text.text-product {
+          margin-left: 0;
+        }
+
+        .text.text-designer {
+          margin-bottom: 6rem;
+        }
+      }
+
+      .my-expertise-1 .title {
+        margin-left: 0;
+      }
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <div class="row" style="margin-left: 100px">
+    <div class="row">
       <div class="my-photo">
         <img src="../assets/images/okanuix.jpg" alt />
       </div>
@@ -22,8 +22,8 @@
         <p class="p3">Turkish is my mother tongue. I am fluent in english and german.</p>
       </div>
     </div>
-    <div class="row my-expertise-background" style="margin-left: -100px">
-      <div class="my-expertise-1">
+    <div class="row my-expertise-background">
+      <div class="my-expertise-1" style="margin-left=8rem">
         <div class="title"></div>
         <ul>
           <li>Research & Analysis</li>
@@ -81,14 +81,13 @@ export default {};
 
 <style lang="scss" scoped>
 .brands {
-  display: flex;
-  place-content: center;
-  margin-bottom: 250px;
-
   ul {
-    display: flex;
-    justify-content: space-around;
-    width: 75%;
+    margin-bottom: 250px;
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: 0 7rem;
+    justify-items: center;
   }
 }
 ul {
@@ -105,11 +104,11 @@ ul {
 }
 .about {
   .row {
-    display: flex;
-    // flex-basis: 50%;
-    flex: 1 1 auto;
-    padding: 0 400px;
+    padding: 0 11vw;
     margin-top: 200px;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
 }
 
@@ -128,12 +127,12 @@ ul {
     background-size: 100% 100%;
     width: 471px;
     height: 99px;
-    margin-left: -170px;
+    margin-left: -6rem;
   }
 }
 
 .my-expertise-2 {
-  margin-left: 490px;
+  margin-left: 13rem;
   margin-top: 99px;
 }
 
@@ -209,7 +208,7 @@ ul {
 .lets {
   font-weight: bold;
   font-size: 48px;
-  line-height: 28px;
+  line-height: 40px;
   color: #ffffff;
 }
 

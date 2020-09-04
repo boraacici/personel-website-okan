@@ -218,7 +218,6 @@ export default {
   padding-top: 200px;
 }
 .project-infos {
-  display: none;
   .project-info {
     display: none;
 
