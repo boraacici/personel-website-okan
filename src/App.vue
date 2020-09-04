@@ -151,7 +151,34 @@ export default {
       }
     },
     touchEndHandler(event) {
-      // debugger;
+      if (this.touchStart) {
+        this.touchEnd = event.changedTouches[0].pageY;
+
+        let viewportRect = this.$refs.viewport.getClientRects()[0];
+        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 2;
+        if (
+          scrollY * -1 > viewportRect.height - window.innerHeight ||
+          viewportRect.y >= viewportRect.height - window.innerHeight
+        ) {
+          scrollY = (viewportRect.height - window.innerHeight) * -1;
+        }
+
+        if (scrollY > 0) {
+          scrollY = 0;
+        }
+
+        gsap.to(this.$refs.viewport, {
+          y: scrollY + "px",
+          duration: 0.6,
+          ease: "circ.out",
+        });
+
+        this.touchStart = event.changedTouches[0].pageY;
+
+        this.updateScrollBar();
+      } else {
+        this.touchStart = event.changedTouches[0].pageY;
+      }
     },
     updateScrollBar() {
       const scope = this;
