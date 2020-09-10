@@ -280,6 +280,10 @@ export default {
       left: 10vh;
       top: 5vh;
       transform: scale(0.6);
+
+            img {
+        max-height: 95vh;
+      }
     }
 
     .right-image {
