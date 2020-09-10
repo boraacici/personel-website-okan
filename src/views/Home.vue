@@ -286,7 +286,6 @@ export default {
       position: fixed;
       right: 6vw;
       top: 0;
-      opacity: 0.8;
       transform: scale(0.6);
 
       img {
