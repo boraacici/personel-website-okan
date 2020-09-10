@@ -21,10 +21,10 @@
       >
         <span class="category-info">{{project.category}}</span>
         <span class="year">{{project.year}}</span>
-        <div class="left-image">
+        <div class="left-image" v-if="project.leftImage">
           <img :src="require(`../assets/images/${project.leftImage}`)" alt />
         </div>
-        <div class="right-image">
+        <div class="right-image" v-if="project.rightImage">
           <img :src="require(`../assets/images/${project.rightImage}`)" alt />
         </div>
       </div>
@@ -51,85 +51,99 @@ export default {
         },
         {
           id: "2",
-          name: "TRT Belgesel",
-          leftImage: "trtbelgesel-left.jpg",
-          rightImage: "trtbelgesel-right.jpg",
-          year: "2020",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "#2D3E18",
+          name: "TRT Dinle",
+          leftImage: "trtdinle-left.png",
+          rightImage: "trtdinle-right.png",
+          year: "2019 - Present",
+          category: "Strategy • UX • App • Web",
+          backgroundColor:
+            "radial-gradient(136.62% 136.62% at 92.79% 3.56%, #27E4DC 0%, #1DB7CF 23.96%, #1071BF 44.27%, #06388B 78.65%, #021B50 100%)",
           status: "SEE_LIVE",
+          goLink: "https://www.trtdinle.com/",
         },
         {
           id: "3",
-          name: "Zaha Hadid Architects",
-          leftImage: "zahahadid-left.jpg",
-          rightImage: "zahahadid-right.jpg",
-          year: "2019",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "black",
+          name: "TRT Belgesel",
+          leftImage: "trtbelgesel-left.jpg",
+          rightImage: "trtbelgesel-right.jpg",
+          year: "2018",
+          category: "Web • Service Design",
+          backgroundColor: "#18181C",
+          status: "SEE_LIVE",
+          goLink: "https://www.trtbelgesel.com.tr/",
         },
         {
           id: "4",
-          name: "TRT Belgesel",
-          leftImage: "trtbelgesel-left.jpg",
-          rightImage: "trtbelgesel-right.jpg",
-          year: "2020",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "#2D3E18",
+          name: "UNO",
+          leftImage: "uno-left.png",
+          rightImage: "uno-right.png",
+          year: "2016",
+          category: "Web",
+          backgroundColor: "#540306",
+          status: "CONCEPT",
         },
         {
           id: "5",
-          name: "Zaha Hadid Architects",
-          leftImage: "zahahadid-left.jpg",
-          rightImage: "zahahadid-right.jpg",
-          year: "2019",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "black",
+          name: "Rush App",
+          leftImage: "rush-left.png",
+          rightImage: "rush-right.png",
+          year: "2018",
+          category: "UX • App Design",
+          backgroundColor:
+            "radial-gradient(54.26% 104.69% at 53.02% 72.55%, #251978 0%, #421E85 100%)",
+          status: "OUTDATED",
         },
         {
           id: "6",
-          name: "TRT Belgesel",
-          leftImage: "trtbelgesel-left.jpg",
-          rightImage: "trtbelgesel-right.jpg",
-          year: "2020",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "#2D3E18",
+          name: "TRT World",
+          leftImage: "trtworld-left.png",
+          rightImage: "trtworld-right.png",
+          year: "2017 - Present",
+          category: "Strategy • UX • App • Web ",
+          backgroundColor: "#283F46",
+          status: "SEE_LIVE",
+          goLink: "http://trtworld.com/",
         },
         {
           id: "7",
-          name: "Zaha Hadid Architects",
-          leftImage: "zahahadid-left.jpg",
-          rightImage: "zahahadid-right.jpg",
-          year: "2019",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "black",
+          name: "Turkish Airlines",
+          year: "2015",
+          category: "App Design • Web App",
+          backgroundColor: "#000000",
+          status: "PRIVATE",
         },
         {
           id: "8",
-          name: "TRT Belgesel",
-          leftImage: "trtbelgesel-left.jpg",
-          rightImage: "trtbelgesel-right.jpg",
-          year: "2020",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "#2D3E18",
+          name: "The Good Mood Co",
+          leftImage: "goodmoodco-left.png",
+          rightImage: "goodmoodco-right.png",
+          year: "2016",
+          category: "Strategy • Web",
+          backgroundColor: "#2E022F",
+          status: "NOT ALIVE",
         },
         {
           id: "9",
-          name: "Zaha Hadid Architects",
-          leftImage: "zahahadid-left.jpg",
-          rightImage: "zahahadid-right.jpg",
+          name: "TRT Izle",
+          leftImage: "trtizle-left.png",
+          rightImage: "trtizle-right.png",
           year: "2019",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "black",
+          category: "UX • Web • App",
+          backgroundColor: "#18181C",
+          status: "SEE_LIVE",
+          goLink: "https://www.trtizle.com/",
         },
         {
           id: "10",
-          name: "TRT Belgesel",
-          leftImage: "trtbelgesel-left.jpg",
-          rightImage: "trtbelgesel-right.jpg",
+          name: "TRT Cocuk",
+          leftImage: "trtcocuk-left.png",
+          rightImage: "trtcocuk-right.png",
           year: "2020",
-          category: "Web + Mobile + Branding",
-          backgroundColor: "#2D3E18",
+          category: "UX • Web",
+          backgroundColor:
+            "radial-gradient(54.26% 104.69% at 53.02% 72.55%, #251978 0%, #421E85 100%)",
+          status: "SEE_LIVE",
+          goLink: "www.trtcocuk.com",
         },
       ],
       activeProject: null,
@@ -159,7 +173,7 @@ export default {
 
       let viewport = document.getElementById("viewport");
 
-      viewport.style.backgroundColor = this.activeProject.backgroundColor;
+      viewport.style.background = this.activeProject.backgroundColor;
 
       var translateY = this.getTranslateY(viewport);
       projectInfoEl.querySelector(
@@ -198,7 +212,7 @@ export default {
 
       let viewport = document.getElementById("viewport");
 
-      viewport.style.backgroundColor = "black";
+      viewport.style.background = "black";
 
       circle1.className = `title-to-default`;
       circle1.innerText = "";
