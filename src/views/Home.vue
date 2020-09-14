@@ -121,7 +121,7 @@ export default {
           year: "2016",
           category: "Strategy • Web",
           backgroundColor: "#2E022F",
-          status: "NOT ALIVE",
+          status: "NOT_ALIVE",
         },
         {
           id: "9",
@@ -144,7 +144,7 @@ export default {
           backgroundColor:
             "radial-gradient(54.26% 104.69% at 53.02% 72.55%, #251978 0%, #421E85 100%)",
           status: "SEE_LIVE",
-          goLink: "www.trtcocuk.com",
+          goLink: "https://www.trtcocuk.net.tr/",
         },
       ],
       activeProject: null,

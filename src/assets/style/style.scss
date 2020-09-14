@@ -160,6 +160,18 @@ h2 {
     &.circle-seelive {
       animation: circleSeeLive 0.3s forwards;
     }
+    &.circle-concept {
+      animation: circleConcept 0.3s forwards;
+    }
+    &.circle-outdated {
+      animation: circleOutdated 0.3s forwards;
+    }
+    &.circle-private {
+      animation: circlePrivate 0.3s forwards;
+    }
+    &.circle-notalive {
+      animation: circleNotalive 0.3s forwards;
+    }
     &.title-to-default {
       animation: titleToDefault 0.4s forwards;
     }
@@ -204,6 +216,54 @@ h2 {
 }
 
 @keyframes circleSoon {
+  to {
+    height: 92px;
+    width: 92px;
+    margin-left: -46px;
+    margin-top: -46px;
+    background: #fff;
+    padding-top: 36px;
+    padding-left: 21px;
+  }
+}
+
+@keyframes circleConcept {
+  to {
+    height: 130px;
+    width: 130px;
+    margin-left: -65px;
+    margin-top: -65px;
+    background: #fff;
+    padding-top: 36px;
+    padding-left: 21px;
+  }
+}
+
+@keyframes circleOutdated {
+  to {
+    height: 92px;
+    width: 92px;
+    margin-left: -46px;
+    margin-top: -46px;
+    background: #fff;
+    padding-top: 36px;
+    padding-left: 21px;
+  }
+}
+
+@keyframes circlePrivate {
+  to {
+    height: 92px;
+    width: 92px;
+    margin-left: -46px;
+    margin-top: -46px;
+    background: #fff;
+    padding-top: 36px;
+    padding-left: 21px;
+  }
+}
+
+@keyframes circleNotalive {
   to {
     height: 92px;
     width: 92px;
