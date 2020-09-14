@@ -6,6 +6,7 @@
           <div
             @mouseenter="mouseenterTitle(project)"
             @mouseleave="mouseleaveTitle(project)"
+            @click="goLink(project)"
             class="title"
             v-observe-visibility="titleVisibility"
           >{{project.name}}</div>
@@ -152,6 +153,9 @@ export default {
   },
   components: {},
   methods: {
+    goLink(project) {
+      if (project.goLink) window.open(project.goLink, "_blank");
+    },
     titleVisibility(isVisible, entry) {
       let element = entry.target;
       if (isVisible && !element.classList.contains("fadeInUp")) {
@@ -281,7 +285,7 @@ export default {
       top: 5vh;
       transform: scale(0.6);
 
-            img {
+      img {
         max-height: 95vh;
       }
     }
