@@ -186,12 +186,16 @@ export default {
       projectInfoEl.querySelector(
         ".category-info"
       ).style.top = `calc(95vh - ${translateY}px)`;
-      projectInfoEl.querySelector(
-        ".left-image"
-      ).style.top = `calc(5vh - ${translateY}px)`;
-      projectInfoEl.querySelector(".right-image").style.top = `${
-        translateY * -1
-      }px`;
+
+      if (project.leftImage)
+        projectInfoEl.querySelector(
+          ".left-image"
+        ).style.top = `calc(5vh - ${translateY}px)`;
+
+      if (project.rightImage)
+        projectInfoEl.querySelector(".right-image").style.top = `${
+          translateY * -1
+        }px`;
 
       let circle1 = document.querySelector("#cursor #circle1");
 
