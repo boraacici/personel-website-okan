@@ -321,9 +321,6 @@ ul {
   text-align: center;
 
   ul {
-    position: relative;
-    z-index: 20;
-    mix-blend-mode: difference;
     li {
       height: 99px;
       font-family: Gilroy;
@@ -352,6 +349,9 @@ ul {
           color: white !important;
           opacity: 1 !important;
           z-index: 1;
+          position: relative;
+          z-index: 20;
+          mix-blend-mode: difference;
         }
 
         &.fadeInUp {
