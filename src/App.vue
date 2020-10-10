@@ -53,6 +53,12 @@ export default {
       this.$refs.viewport.addEventListener("touchend", this.touchEndHandler);
     }
   },
+  watch: {
+    $route(to, from) {
+      this.cursorDefault();
+      this.$refs.viewport.style.background = "black";
+    },
+  },
   methods: {
     transtionBeforeEnter() {
       this.transitionTl.fromTo(
@@ -84,6 +90,9 @@ export default {
       });
     },
     transitionLeave() {},
+    cursorDefault() {
+      this.$refs.circle1.className = "enter";
+    },
     cursorMove(event) {
       if (
         this.$refs.circle1.className === "" ||
