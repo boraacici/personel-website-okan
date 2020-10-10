@@ -3,13 +3,15 @@
     <div class="projects">
       <ul class="list">
         <li v-for="project in projects" v-bind:key="project.id">
-          <div
+          <span
             @mouseenter="mouseenterTitle(project)"
             @mouseleave="mouseleaveTitle(project)"
             @click="goLink(project)"
             class="title"
             v-observe-visibility="titleVisibility"
-          >{{project.name}}</div>
+          >
+            {{ project.name }}
+          </span>
         </li>
       </ul>
     </div>
@@ -20,8 +22,8 @@
         class="project-info"
         :projectId="project.id"
       >
-        <span class="category-info">{{project.category}}</span>
-        <span class="year">{{project.year}}</span>
+        <span class="category-info">{{ project.category }}</span>
+        <span class="year">{{ project.year }}</span>
         <div class="left-image" v-if="project.leftImage">
           <img :src="require(`../assets/images/${project.leftImage}`)" alt />
         </div>
@@ -178,6 +180,11 @@ export default {
       let viewport = document.getElementById("viewport");
 
       viewport.style.background = this.activeProject.backgroundColor;
+      let titles = viewport.querySelectorAll(".title");
+
+      for (let index = 0; index < titles.length; index++) {
+        titles[index].style.color = this.activeProject.backgroundColor;
+      }
 
       var translateY = this.getTranslateY(viewport);
       projectInfoEl.querySelector(
@@ -221,6 +228,11 @@ export default {
       let viewport = document.getElementById("viewport");
 
       viewport.style.background = "black";
+      let titles = viewport.querySelectorAll(".title");
+
+      for (let index = 0; index < titles.length; index++) {
+        titles[index].style.color = "black";
+      }
 
       circle1.className = `title-to-default`;
       circle1.innerText = "";
@@ -281,6 +293,8 @@ export default {
       top: 95vh;
       left: 2vw;
       opacity: 0;
+      z-index: 99;
+      mix-blend-mode: difference;
     }
 
     .left-image {
@@ -288,6 +302,7 @@ export default {
       left: 10vh;
       top: 5vh;
       transform: scale(0.6);
+      pointer-events: none;
 
       img {
         max-height: 95vh;
@@ -299,6 +314,7 @@ export default {
       right: 6vw;
       top: 0;
       transform: scale(0.6);
+      pointer-events: none;
 
       img {
         max-height: 90vh;

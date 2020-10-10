@@ -323,8 +323,8 @@ ul {
   ul {
     position: relative;
     z-index: 20;
+    mix-blend-mode: difference;
     li {
-      mix-blend-mode: difference;
       height: 99px;
       font-family: Gilroy;
       font-style: normal;
@@ -336,10 +336,11 @@ ul {
         white 0px 0px 1px, white 0px 0px 1px, white 0px 0px 1px;
       color: black;
       transition: 0.3s color;
-      z-index: 1;
-      position: relative;
       margin-bottom: 100px;
-      user-select: none;
+
+      span {
+        user-select: none;
+      }
 
       .title {
         display: inline-block;
@@ -347,7 +348,7 @@ ul {
         transform: translate3d(0, 100%, 0);
 
         &:hover {
-          color: white;
+          color: white !important;
         }
 
         &.fadeInUp {
