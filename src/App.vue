@@ -8,7 +8,12 @@
       <div id="circle1" ref="circle1"></div>
       <div ref="circle2" id="circle2"></div>
     </div>
-    <div id="viewport" ref="viewport" @mousemove="cursorMove" @mouseleave="cursorLeave">
+    <div
+      id="viewport"
+      ref="viewport"
+      @mousemove="cursorMove"
+      @mouseleave="cursorLeave"
+    >
       <topbar />
       <transition name="slide-fade">
         <router-view></router-view>
@@ -117,16 +122,19 @@ export default {
       this.updateScrollBar();
     },
     touchStartHandler(event) {
-      // debugger;
-      this.touchStart = event.changedTouches[0].pageY;
+      this.touchStartY = event.changedTouches[0].pageY;
+      this.touchStartTimeStamp = event.timeStamp;
     },
     touchMoveHandler(event) {
       if (this.touchStart) {
         this.touchEnd = event.changedTouches[0].pageY;
 
         let viewportRect = this.$refs.viewport.getClientRects()[0];
-        console.log(this.touchEnd - this.touchStart);
-        let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1.5;
+        let scrollFactor = 100 - event.timeStamp - this.touchStartTimeStamp;
+        let scrollY =
+          viewportRect.y +
+          (this.touchEnd - this.touchStart) * (1 + scrollFactor / 1000);
+        console.log(event.timeStamp - this.touchStartTimeStamp);
         if (
           scrollY * -1 > viewportRect.height - window.innerHeight ||
           viewportRect.y >= viewportRect.height - window.innerHeight
@@ -145,6 +153,7 @@ export default {
         });
 
         this.touchStart = event.changedTouches[0].pageY;
+        this.touchStartTimeStamp = event.timeStamp;
 
         this.updateScrollBar(0.1);
       } else {
@@ -152,6 +161,8 @@ export default {
       }
     },
     touchEndHandler(event) {
+      this.touchStartY = null;
+      this.touchStartTimeStamp = null;
       // if (this.touchStart) {
       //   this.touchEnd = event.changedTouches[0].pageY;
       //   let viewportRect = this.$refs.viewport.getClientRects()[0];
