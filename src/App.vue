@@ -91,7 +91,8 @@ export default {
     },
     transitionLeave() {},
     cursorDefault() {
-      this.$refs.circle1.className = "enter";
+      if (this.$refs.circle1.className !== "")
+        this.$refs.circle1.className = "enter";
     },
     cursorMove(event) {
       if (
