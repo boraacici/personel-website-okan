@@ -4,7 +4,7 @@
       <ul class="list">
         <li v-for="project in projects" v-bind:key="project.id">
           <span
-            @mouseenter="mouseenterTitle(project)"
+            @mouseenter="mouseenterTitle(project, $event)"
             @mouseleave="mouseleaveTitle(project)"
             @click="goLink(project)"
             class="title"
@@ -164,7 +164,7 @@ export default {
         element.classList.add("fadeInUp");
       }
     },
-    mouseenterTitle(project) {
+    mouseenterTitle(project, event) {
       if (this.activeProject) {
         this.lastProject = this.activeProject;
       }
@@ -184,7 +184,10 @@ export default {
 
       for (let index = 0; index < titles.length; index++) {
         titles[index].style.color = this.activeProject.backgroundColor;
+        titles[index].style.setProperty("opacity", "0.5", "important");
       }
+
+      event.target.style.setProperty("opacity", "1", "important");
 
       var translateY = this.getTranslateY(viewport);
       projectInfoEl.querySelector(
@@ -232,6 +235,8 @@ export default {
 
       for (let index = 0; index < titles.length; index++) {
         titles[index].style.color = "black";
+        titles[index].style.opacity = "1";
+        titles[index].style.zIndex = "1";
       }
 
       circle1.className = `title-to-default`;

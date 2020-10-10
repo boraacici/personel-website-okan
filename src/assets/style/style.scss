@@ -340,6 +340,7 @@ ul {
 
       span {
         user-select: none;
+        position: relative;
       }
 
       .title {
@@ -349,6 +350,8 @@ ul {
 
         &:hover {
           color: white !important;
+          opacity: 1 !important;
+          z-index: 1;
         }
 
         &.fadeInUp {
