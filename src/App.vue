@@ -126,14 +126,14 @@ export default {
       this.touchStartTimeStamp = event.timeStamp;
     },
     touchMoveHandler(event) {
-      if (this.touchStart) {
-        this.touchEnd = event.changedTouches[0].pageY;
+      if (this.touchStartY) {
+        this.touchendY = event.changedTouches[0].pageY;
 
         let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollFactor = 100 - event.timeStamp - this.touchStartTimeStamp;
+        let scrollFactor = 1000 - event.timeStamp + this.touchStartTimeStamp;
         let scrollY =
           viewportRect.y +
-          (this.touchEnd - this.touchStart) * (1 + scrollFactor / 1000);
+          (this.touchendY - this.touchStartY) * (1 + scrollFactor / 1000);
         console.log(event.timeStamp - this.touchStartTimeStamp);
         if (
           scrollY * -1 > viewportRect.height - window.innerHeight ||
@@ -152,21 +152,21 @@ export default {
           ease: "circ.out",
         });
 
-        this.touchStart = event.changedTouches[0].pageY;
+        this.touchStartY = event.changedTouches[0].pageY;
         this.touchStartTimeStamp = event.timeStamp;
 
         this.updateScrollBar(0.1);
       } else {
-        this.touchStart = event.changedTouches[0].pageY;
+        this.touchStartY = event.changedTouches[0].pageY;
       }
     },
     touchEndHandler(event) {
       this.touchStartY = null;
       this.touchStartTimeStamp = null;
-      // if (this.touchStart) {
-      //   this.touchEnd = event.changedTouches[0].pageY;
+      // if (this.touchStartY) {
+      //   this.touchendY = event.changedTouches[0].pageY;
       //   let viewportRect = this.$refs.viewport.getClientRects()[0];
-      //   let scrollY = viewportRect.y + (this.touchEnd - this.touchStart) * 1;
+      //   let scrollY = viewportRect.y + (this.touchendY - this.touchStartY) * 1;
       //   if (
       //     scrollY * -1 > viewportRect.height - window.innerHeight ||
       //     viewportRect.y >= viewportRect.height - window.innerHeight
@@ -181,10 +181,10 @@ export default {
       //     duration: 0.2,
       //     ease: "circ.out",
       //   });
-      //   this.touchStart = event.changedTouches[0].pageY;
+      //   this.touchStartY = event.changedTouches[0].pageY;
       //   this.updateScrollBar();
       // } else {
-      //   this.touchStart = event.changedTouches[0].pageY;
+      //   this.touchStartY = event.changedTouches[0].pageY;
       // }
     },
     updateScrollBar(duration = 0.1) {
