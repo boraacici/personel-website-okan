@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @mousemove="cursorMove" @mouseleave="cursorLeave">
     <!-- <div ref="transtionElement" class="transition-page">
       <h1>Okan Yıkmış</h1>
       <p>SELECTED FOLIO 2020</p>
@@ -8,12 +8,34 @@
       <div id="circle1" ref="circle1"></div>
       <div ref="circle2" id="circle2"></div>
     </div>
-    <div
-      id="viewport"
-      ref="viewport"
-      @mousemove="cursorMove"
-      @mouseleave="cursorLeave"
-    >
+    <!-- <div class="welcome-page">
+      <h1>Okan Yıkmış</h1>
+      <p>SELECTED FOLIO 2020</p>
+      <div class="circle-scroll">
+        <h6>
+          <span>S</span>
+          <span>C</span>
+          <span>R</span>
+          <span>O</span>
+          <span>L</span>
+          <span>L</span>
+          <span></span>
+          <span>F</span>
+          <span>O</span>
+          <span>R</span>
+          <span></span>
+          <span>M</span>
+          <span>Y</span>
+          <span></span>
+          <span>W</span>
+          <span>O</span>
+          <span>R</span>
+          <span>K</span>
+          <span></span>
+        </h6>
+      </div>
+    </div> -->
+    <div id="viewport" ref="viewport">
       <topbar />
       <transition name="slide-fade">
         <router-view></router-view>
@@ -51,7 +73,9 @@ export default {
       );
       this.$refs.viewport.addEventListener("touchmove", this.touchMoveHandler);
       this.$refs.viewport.addEventListener("touchend", this.touchEndHandler);
+
     }
+      this.setTextOnCircle();
   },
   watch: {
     $route(to, from) {
@@ -60,6 +84,16 @@ export default {
     },
   },
   methods: {
+    setTextOnCircle() {
+      let letters = document.querySelectorAll(".circle-scroll h6 span");
+      var deg = 200;
+      for (let index = 0; index < letters.length; index++) {
+        const element = letters[index];
+        element.style.setProperty("transform", `rotate(${deg}deg)`);
+
+        deg += 360 / letters.length;
+      }
+    },
     transtionBeforeEnter() {
       this.transitionTl.fromTo(
         this.$refs.transtionElement,

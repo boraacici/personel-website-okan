@@ -178,6 +178,63 @@ h2 {
   }
 }
 
+.welcome-page {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    width: 354px;
+    height: 88px;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 88px;
+    letter-spacing: 1px;
+    color: #000000;
+    align-self: end;
+  }
+
+  p {
+    width: 350px;
+    height: 92px;
+    align-self: baseline;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 92px;
+    /* identical to box height, or 287% */
+
+    letter-spacing: 1px;
+
+    color: #000000;
+  }
+
+  .circle-scroll {
+    position: absolute;
+    right: 20%;
+    bottom: 20%;
+    color: black;
+
+    h6 span {
+      position: absolute;
+      transform-origin: bottom center;
+      font-family: Gilroy;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 25px;
+      width: 30px;
+      height: 70px;
+      color: #000000;
+    }
+  }
+}
+
 @keyframes cursorEnter {
   to {
     height: 14px;

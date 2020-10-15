@@ -3,8 +3,8 @@
     <span class="sign">Okan</span>
     <span class="center-info">2020 Folio</span>
     <div class="menu">
-      <router-link to="/projects">Works</router-link>
-      <router-link to="/">About Me</router-link>
+      <router-link to="/">Works</router-link>
+      <router-link to="/about">About Me</router-link>
     </div>
   </div>
 </template>
