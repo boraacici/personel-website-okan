@@ -73,9 +73,8 @@ export default {
       );
       this.$refs.viewport.addEventListener("touchmove", this.touchMoveHandler);
       this.$refs.viewport.addEventListener("touchend", this.touchEndHandler);
-
     }
-      this.setTextOnCircle();
+    this.setTextOnCircle();
   },
   watch: {
     $route(to, from) {

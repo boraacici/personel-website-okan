@@ -483,7 +483,9 @@ ul {
   }
   .about {
     .row {
+      padding: 0 9vw !important;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+
       &.my-expertise-background {
         background-size: 400% 100%;
         background-repeat: no-repeat;

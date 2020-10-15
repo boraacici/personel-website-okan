@@ -9,23 +9,26 @@
         <div class="text text-ui-ux"></div>
         <div class="text text-designer"></div>
         <p>
-          <span class="bold">Okan Yıkmış</span> is senior product designer, working in the industry for over 10+ Years
+          <span class="bold">Okan Yıkmış</span> is senior product designer,
+          working in the industry for over 10+ Years
         </p>
-        <p
-          class="p2"
-        >I craft interactive stories, responsible for designing interactive experiences and create strategies for services from the customer’s perspective is essential for delivering an end-to-end experience and concept strategies with great care.</p>
+        <p class="p2">
+          I craft interactive stories, responsible for designing interactive
+          experiences and create strategies for services from the customer’s
+          perspective is essential for delivering an end-to-end experience and
+          concept strategies with great care.
+        </p>
         <p class="p2">
           Currently based in Istanbul as a
           <span class="bold">Senior Product Designer</span> for
           <span class="bold">TRT</span>
         </p>
-        <p class="p3">Turkish is my mother tongue. I am fluent in english and german.</p>
       </div>
     </div>
     <div class="row my-expertise-background">
-      <div class="my-expertise-1" style="margin-left=8rem">
-        <div class="title"></div>
+      <div class="my-expertise-1">
         <ul>
+          <span class="list-title">UX</span>
           <li>Research & Analysis</li>
           <li>UX Brand Strategies</li>
           <li>Whiteboard Concept Sessions</li>
@@ -39,6 +42,7 @@
       </div>
       <div class="my-expertise-2">
         <ul>
+          <span class="list-title">UI</span>
           <li>Visual Designs & Specs</li>
           <li>Web Design</li>
           <li>App Design</li>
@@ -69,6 +73,9 @@
       </ul>
     </div>
     <div class="lets-do">
+      <a class="mail-box" href="mailto: okanyikmis@gmail.com"
+        ><i class="icon"></i
+      ></a>
       <p class="lets">Let’s do a project together</p>
       <a href="mailto: okanyikmis@gmail.com">Contact with me</a>
     </div>
@@ -86,7 +93,7 @@ export default {};
     display: grid;
     grid-gap: 3rem;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    padding: 0 7rem;
+    padding: 0 17vw;
     justify-items: center;
   }
 }
@@ -101,10 +108,23 @@ ul {
   li {
     margin-bottom: 5px;
   }
+
+  .list-title {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 50px;
+    /* identical to box height */
+
+    color: #ffffff;
+
+    margin-bottom: 17px;
+  }
 }
 .about {
   .row {
-    padding: 0 11vw;
+    padding: 0 17vw;
     margin-top: 200px;
     display: grid;
     grid-gap: 1rem;
@@ -133,7 +153,6 @@ ul {
 
 .my-expertise-2 {
   margin-left: 13rem;
-  margin-top: 99px;
 }
 
 .about-me {
@@ -203,6 +222,22 @@ ul {
 .lets-do {
   text-align: center;
   margin-bottom: 100px;
+  padding: 0 15vw;
+
+  p {
+    margin-top: 33px;
+    line-height: 1;
+  }
+
+  .mail-box {
+    display: grid;
+    justify-content: center;
+    .icon {
+      background: url(../assets/images/mail-box.png);
+      width: 58px;
+      height: 44px;
+    }
+  }
 }
 
 .lets {
