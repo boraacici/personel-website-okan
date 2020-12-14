@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @mousemove="cursorMove" @mouseleave="cursorLeave">
+  <div id="app">
     <!-- <div ref="transtionElement" class="transition-page">
       <h1>Okan Yıkmış</h1>
       <p>SELECTED FOLIO 2020</p>
@@ -8,34 +8,13 @@
       <div id="circle1" ref="circle1"></div>
       <div ref="circle2" id="circle2"></div>
     </div>
-    <!-- <div class="welcome-page">
-      <h1>Okan Yıkmış</h1>
-      <p>SELECTED FOLIO 2020</p>
-      <div class="circle-scroll">
-        <h6>
-          <span>S</span>
-          <span>C</span>
-          <span>R</span>
-          <span>O</span>
-          <span>L</span>
-          <span>L</span>
-          <span></span>
-          <span>F</span>
-          <span>O</span>
-          <span>R</span>
-          <span></span>
-          <span>M</span>
-          <span>Y</span>
-          <span></span>
-          <span>W</span>
-          <span>O</span>
-          <span>R</span>
-          <span>K</span>
-          <span></span>
-        </h6>
-      </div>
-    </div> -->
-    <div id="viewport" ref="viewport">
+    <!-- <welcome-page /> -->
+    <div
+      id="viewport"
+      ref="viewport"
+      @mousemove="cursorMove"
+      @mouseleave="cursorLeave"
+    >
       <topbar />
       <transition name="slide-fade">
         <router-view></router-view>
@@ -49,10 +28,11 @@
 
 <script>
 import Topbar from "./components/Topbar";
+import WelcomePage from "./components/Welcome-Page";
 
 export default {
   name: "app",
-  components: { topbar: Topbar },
+  components: { topbar: Topbar, "welcome-page": WelcomePage },
   data() {
     return {
       transitionName: "",
@@ -64,17 +44,11 @@ export default {
     };
   },
   mounted() {
-    this.$refs.viewport.addEventListener("wheel", this.onWheel);
-
     if ("ontouchstart" in window) {
-      this.$refs.viewport.addEventListener(
-        "touchstart",
-        this.touchStartHandler
-      );
-      this.$refs.viewport.addEventListener("touchmove", this.touchMoveHandler);
-      this.$refs.viewport.addEventListener("touchend", this.touchEndHandler);
+      document.body.style.overflow = "visible"
+    } else {
+      this.$refs.viewport.addEventListener("wheel", this.onWheel);
     }
-    this.setTextOnCircle();
   },
   watch: {
     $route(to, from) {
@@ -83,16 +57,6 @@ export default {
     },
   },
   methods: {
-    setTextOnCircle() {
-      let letters = document.querySelectorAll(".circle-scroll h6 span");
-      var deg = 200;
-      for (let index = 0; index < letters.length; index++) {
-        const element = letters[index];
-        element.style.setProperty("transform", `rotate(${deg}deg)`);
-
-        deg += 360 / letters.length;
-      }
-    },
     transtionBeforeEnter() {
       this.transitionTl.fromTo(
         this.$refs.transtionElement,
@@ -163,72 +127,6 @@ export default {
       });
 
       this.updateScrollBar();
-    },
-    touchStartHandler(event) {
-      this.touchStartY = event.changedTouches[0].pageY;
-      this.touchStartTimeStamp = event.timeStamp;
-    },
-    touchMoveHandler(event) {
-      if (this.touchStartY) {
-        this.touchendY = event.changedTouches[0].pageY;
-
-        let viewportRect = this.$refs.viewport.getClientRects()[0];
-        let scrollFactor = 1000 - event.timeStamp + this.touchStartTimeStamp;
-        let scrollY =
-          viewportRect.y +
-          (this.touchendY - this.touchStartY) * (1 + scrollFactor / 1000);
-        console.log(event.timeStamp - this.touchStartTimeStamp);
-        if (
-          scrollY * -1 > viewportRect.height - window.innerHeight ||
-          viewportRect.y >= viewportRect.height - window.innerHeight
-        ) {
-          scrollY = (viewportRect.height - window.innerHeight) * -1;
-        }
-
-        if (scrollY > 0) {
-          scrollY = 0;
-        }
-
-        gsap.to(this.$refs.viewport, {
-          y: scrollY + "px",
-          duration: 0.1,
-          ease: "circ.out",
-        });
-
-        this.touchStartY = event.changedTouches[0].pageY;
-        this.touchStartTimeStamp = event.timeStamp;
-
-        this.updateScrollBar(0.1);
-      } else {
-        this.touchStartY = event.changedTouches[0].pageY;
-      }
-    },
-    touchEndHandler(event) {
-      this.touchStartY = null;
-      this.touchStartTimeStamp = null;
-      // if (this.touchStartY) {
-      //   this.touchendY = event.changedTouches[0].pageY;
-      //   let viewportRect = this.$refs.viewport.getClientRects()[0];
-      //   let scrollY = viewportRect.y + (this.touchendY - this.touchStartY) * 1;
-      //   if (
-      //     scrollY * -1 > viewportRect.height - window.innerHeight ||
-      //     viewportRect.y >= viewportRect.height - window.innerHeight
-      //   ) {
-      //     scrollY = (viewportRect.height - window.innerHeight) * -1;
-      //   }
-      //   if (scrollY > 0) {
-      //     scrollY = 0;
-      //   }
-      //   gsap.to(this.$refs.viewport, {
-      //     y: scrollY + "px",
-      //     duration: 0.2,
-      //     ease: "circ.out",
-      //   });
-      //   this.touchStartY = event.changedTouches[0].pageY;
-      //   this.updateScrollBar();
-      // } else {
-      //   this.touchStartY = event.changedTouches[0].pageY;
-      // }
     },
     updateScrollBar(duration = 0.1) {
       const scope = this;
